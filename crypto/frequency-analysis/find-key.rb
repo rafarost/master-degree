@@ -1,8 +1,13 @@
 class Cripto
+  # Initializes the class
+  # Read the ciphertext and store on a local variable
+  #
   def initialize(ciphertext)
     @ciphertext = File.open(ciphertext).read.strip
   end
 
+  # Decrypts the ciphertext
+  #
   def decrypt
     show_coincidence_index
     frequency_analysis
@@ -10,12 +15,17 @@ class Cripto
 
   private
 
-  EN_PERC = { "a" => 8, "b" => 2, "c" => 3, "d" => 4, "e" => 13,
-              "f" => 2, "g" => 2, "h" => 6, "i" => 7, "j" => 0,
-              "k" => 1, "l" => 4, "m" => 2, "n" => 7, "o" => 8,
-              "p" => 2, "q" => 0, "r" => 6, "s" => 6, "t" => 9,
-              "u" => 3, "v" => 1, "w" => 2, "x" => 0, "y" => 2,
-              "z" => 0 }
+  # Constant array with the percentual
+  # of occurrences of each letter in
+  # common english sentences
+  EN_PERC =
+  { "a" => 8, "b" => 2, "c" => 3, "d" => 4,
+    "e" => 13,"f" => 2, "g" => 2, "h" => 6,
+    "i" => 7, "j" => 0, "k" => 1, "l" => 4,
+    "m" => 2, "n" => 7, "o" => 8, "p" => 2,
+    "q" => 0, "r" => 6, "s" => 6, "t" => 9,
+    "u" => 3, "v" => 1, "w" => 2, "x" => 0,
+    "y" => 2, "z" => 0 }
 
   def show_coincidence_index
     puts 'What is the max key size that you want to try?'
@@ -47,6 +57,7 @@ class Cripto
     key_size = gets.chomp.to_i
 
     chuncked = @ciphertext.chars.each_slice(key_size).map(&:join)
+    key = ''
 
     key_size.times do |a|
      text = ''
@@ -83,6 +94,13 @@ class Cripto
      shift = arr.rindex(arr.max) - 4
      puts "Shift: #{shift}"
      puts "Key: #{('A'..'Z').to_a[shift]}"
+     key += ('A'..'Z').to_a[shift]
+    end
+
+    puts "The key is #{key}"
+
+    @ciphertext.chars[0..30].each do |char|
+      puts ('a'..'z').to_a[]
     end
   end
   # Fill missed letters
@@ -93,23 +111,26 @@ class Cripto
     end
     hash
   end
-  # Counts the occurrences of each letter in the text
-  #
+  # Counts the occurrences of each letter
+  # in the text
   def frequency(text)
     occurrences = Hash.new(0)
-    text.each_char { |char| occurrences[char] += 1 }
+    text.each_char do |char|
+      occurrences[char] += 1
+    end
     occurrences
   end
-  # Calculates f * (f - 1) for each frequency
-  # returns the sum of all calculated values
-  #
+  # Calculates f * (f - 1) for each
+  # frequency. Returns the sum of
+  # all calculated values.
   def frequency_sum(text)
-    occurrences = frequency(text)
-    occurrences = occurrences.values.map { |item| item * (item - 1) }
-    occurrences.inject(0, :+)
+    occurrs = frequency(text)
+    occurrs = occurrs.values.map do |item|
+      item * (item - 1)
+    end
+    occurrs.inject(0, :+)
   end
   # Calculates the index of coincidence
-  #
   def index_of_coincidence(text)
     sum = frequency_sum(text)
     size = (text.size * (text.size - 1))
