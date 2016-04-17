@@ -590,7 +590,7 @@ The first step to discover the key, is to determine the key size. There are diff
 
 Friedman's method is based on the index of coincidence. The main goal of this index is to determine how random a given text is. The calculation is based on a math formula and was implemented on Ruby tool as presented in the code below. Calculation steps were described in the code.
 
-\lstinputlisting[language=Ruby, firstline=104, lastline=128]{find-key.rb}
+\lstinputlisting[language=Ruby, firstline=131, lastline=155]{find-key.rb}
 
 The expected index of coincidence of an English sentence is 0.065. In other words, calculating the index for a random text will result in a value by far different then 0.065. By understanding how Vigenere cipher works, it's possible to notice that according the key size, the cipher-text will have groups of letters that was shifted with the same approach. 
 
@@ -621,11 +621,18 @@ This frequency analysis was completely automated on the Ruby implementation. Bas
 
 To the first block, T was the most frequent letter. So, guessing that T in fact is E, we had a shift of 15 letters, which means, the first letter of the key was P (15th alphabet letter, considering that A..Z is 0..25). 
 
-On the second block, P was the most frequent letter, which means a shift of 11 letters from E. And so, the second key letter was L. On the third block, we noticed that E was the most frequent letter, and in this case, there was no shift, and the key letter must be A. Doing the same with all the blocks, we will get the entire key PLATO.
+On the second block, P was the most frequent letter, which means a shift of 11 letters from E. And so, the second key letter was L. On the third block, we noticed that E was the most frequent letter, and in this case, there was no shift, and the key letter must be A. Doing the same with all the blocks, we will get the entire key guess PLATO.
 
-With the key and cipher-text in hands, we can now have access to the full plain-text, by simple applying the shift in each cipher-text position according the key.
+\subsection{Plain Text}
+With a good key guess and the cipher-text, now it's time to decrypt and get access to the original plain text. This is possible by simple applying Caesar ciphers in each letter of the cipher-text, according the key.
 
-And then we finally have the plain-text! "neither must we forget that the republic is but the third part of a still larger design which was to have included an ideal history of at". Having the plain-text the main goal of the coursework was achieved.
+The first cipher-text letter is "C" and was encrypted with the first key letter "P". Now we get the difference between positions of this two letters in the alphabet, in this case 13, and apply a 26 module operation. The result will be the position of the first plain text letter, which in this case is N (13). We keep doing the same, getting the second letters of cipher-text and key, applying the same steps, and we have the second plain text letter E.
+
+In the Ruby tool there is an implementation of the described decryption steps. By running it, we finally have the entire plain-text:
+
+"neither must we forget that the republic is but the third part of a still larger design which was to have included an ideal history of at ..."
+
+Having the plain-text the main goal of the coursework was achieved.
 
 \section{Conclusion}
 Vigenere Cipher show us how import his to keep the cipher-text as most randomly as possible, without any kind of pattern. With a simple frequency analysis and some automation, it was possible to discover the key, and then the entire plain-text. 

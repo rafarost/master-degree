@@ -35,8 +35,10 @@ class Cripto
       size = m + 1
       puts ''
       puts "M(#{size})"
+      # Chunck the text in M slices
       chuncked = @ciphertext.chars.each_slice(size).map(&:join)
 
+      # Calculates the index of coincidence for each slice
       indexes = []
       size.times do |a|
         text = ''
@@ -56,6 +58,7 @@ class Cripto
     puts 'So, based on your analysis, what is the key size?'
     key_size = gets.chomp.to_i
 
+    # Chunk text with based on the key size
     chuncked = @ciphertext.chars.each_slice(key_size).map(&:join)
     key = ''
 
@@ -65,11 +68,13 @@ class Cripto
        text += chunck[a] || ''
      end
 
+     # Calculates the frequency percentage of each letter in the slice
      f = frequency(text)
      f_total = f.values.inject(0, :+).to_f
      f_perc = f.inject({}) { |h, (k, v)| h[k] = ((v * 100).to_f / f_total).round; h }
      f_perc = normalize(f_perc)
 
+     # Prints the results
      puts ''
      puts "BLOCK #{a}"
 
@@ -89,6 +94,8 @@ class Cripto
      ('a'..'z').each { |letter| text += " #{en_perc[letter]} " }
      puts text
      puts ''
+
+     # Calculates the shift of the letter E
      puts "LETTER 'E' SHIFT (Most frequent letter in english)"
      arr = f_perc.sort.to_h.values
      shift = arr.rindex(arr.max) - 4
@@ -98,9 +105,19 @@ class Cripto
     end
 
     puts "The key is #{key}"
-
-    @ciphertext.chars[0..30].each do |char|
-      puts ('a'..'z').to_a[]
+    puts ''
+    puts "PLAINTEXT (first 30 chars)"
+    puts ''
+    puts caesars(key)[0..30]
+    puts ''
+  end
+  # Apllying caesar ciphers (according with the key) in each letter of the cipher-text
+  #
+  def caesars(key)
+    a_ord = 'A'.ord # 65
+    key_iterator = key.upcase.chars.map{|c| c.ord - a_ord}.cycle
+    @ciphertext.upcase.each_char.inject('') do |ciphertext, char|
+      ciphertext << ((char.ord - a_ord - key_iterator.next) % 26 + a_ord).chr
     end
   end
   # Fill missed letters
