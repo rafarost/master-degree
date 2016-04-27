@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2016.4.16)  17 APR 2016 16:50
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2016.4.16)  17 APR 2016 18:06
 entering extended mode
 **./paper.tex
 (paper.tex
@@ -259,26 +259,39 @@ Overfull \hbox (4.95276pt too wide) in paragraph at lines 27--28
 [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][] 
  []
 
-) [2] (paper.aux) ) 
+)
+** ATTENTION: \biography is deprecated (line 705). Use \IEEEbiography instead.
+<picture.png, id=10, 461.725pt x 461.725pt>
+File: picture.png Graphic file (type png)
+ <use picture.png>
+Package pdftex.def Info: picture.png used on input line 705.
+(pdftex.def)             Requested size: 72.26411pt x 72.26411pt.
+File: picture.png Graphic file (type png)
+
+<use picture.png>
+Package pdftex.def Info: picture.png used on input line 705.
+(pdftex.def)             Requested size: 72.26411pt x 72.26411pt.
+ [2 <./picture.png (PNG copy)>] (paper.aux) ) 
 Here is how much of TeX's memory you used:
- 3196 strings out of 493634
- 48892 string characters out of 3135239
- 155610 words of memory out of 3000000
- 6587 multiletter control sequences out of 15000+200000
- 35192 words of font info for 64 fonts, out of 3000000 for 9000
+ 3202 strings out of 493634
+ 48969 string characters out of 3135239
+ 155623 words of memory out of 3000000
+ 6591 multiletter control sequences out of 15000+200000
+ 36299 words of font info for 65 fonts, out of 3000000 for 9000
  1028 hyphenation exceptions out of 8191
- 30i,5n,43p,468b,1213s stack positions out of 5000i,500n,10000p,200000b,50000s
-{C:/Users/rostr/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/
-dvips/fontname/8r.enc}<C:/Users/rostr/AppData/Local/Programs/MiKTeX 2.9/fonts/t
-ype1/public/amsfonts/cm/cmmi10.pfb><C:/Users/rostr/AppData/Local/Programs/MiKTe
-X 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/rostr/AppData/Local/P
-rograms/MiKTeX 2.9/fonts/type1/urw/times/utmb8a.pfb><C:/Users/rostr/AppData/Loc
-al/Programs/MiKTeX 2.9/fonts/type1/urw/times/utmbi8a.pfb><C:/Users/rostr/AppDat
-a/Local/Programs/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><C:/Users/rostr/Ap
-pData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/times/utmri8a.pfb>
-Output written on paper.pdf (2 pages, 81416 bytes).
+ 30i,10n,43p,468b,1213s stack positions out of 5000i,500n,10000p,200000b,50000s
+{C:/Users/rostr/AppData/Local/Prog
+rams/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<C:/Users/rostr/AppData/Local/P
+rograms/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/rostr/Ap
+pData/Local/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/U
+sers/rostr/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/times/utmb8a.pfb><
+C:/Users/rostr/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/times/utmbi8a.
+pfb><C:/Users/rostr/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/times/utm
+r8a.pfb><C:/Users/rostr/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/urw/times
+/utmri8a.pfb>
+Output written on paper.pdf (2 pages, 350472 bytes).
 PDF statistics:
- 34 PDF objects out of 1000 (max. 8388607)
+ 38 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 18 words of extra memory for PDF output out of 10000 (max. 10000000)
 
