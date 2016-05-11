@@ -59,8 +59,8 @@ def plaintexts(key, ciphers)
     end
   end
 
-  puts "Key: #{key_string}" 
-  
+  puts "Key: #{key_string}"
+
   ciphers.size.times do |y|
     texts = ''
     ciphers[y].size.times do |x|
@@ -85,24 +85,24 @@ def otp_attack(messages)
 		message_to_compare = 1
 		spaces_on_message1 = []
     messages[0].size.times { |x| spaces_on_message1.push(' ')}
-		
+
 		while message_to_compare < messages.size
 			message1 = messages[0]
 			message2 = messages[message_to_compare]
-			
+
       # Use the min size between the messages being compared
       #
       if message1.size > message2.size
 				maxlen = message2.size
 			else
 				maxlen = message1.size
-      end			
+      end
       message1 = message1[0..maxlen - 1]
 			message2 = message2[0..maxlen - 1]
-			
+
       # Xor message 1 with message2
 			xored = xor(message1,message2)
-			
+
       # Check for empty spaces in the xor result
 			xor_empty_spaces = []
 			xored.size.times do |x|
@@ -137,15 +137,40 @@ def otp_attack(messages)
 	return key
 end
 
+
+# XOR empty space with a..z
+xored = ''
+'a'.upto('z').to_a.each do |c|
+  xored += (c.ord ^ ' '.ord).chr
+end
+puts xored
+
+# XOR empty space with A..Z
+xored = ''
+'A'.upto('Z').to_a.each do |c|
+  xored += (c.ord ^ ' '.ord).chr
+end
+puts xored
+
+# XOR two empty spaces
+puts (' '.ord ^ ' '.ord).chr
+
+# XOR value with itself
+puts ('A'.ord ^ 'A'.ord).chr
+
+# XOR value with NULL
+puts ('B'.ord ^ ('A'.ord ^ 'A'.ord)).chr
+
 # Get the partial key
 #
 key = otp_attack(ciphers)
 
 # Print partial plain texts
+#
 plaintexts(key, ciphers)
 
 # Guess phase
-# 
+#
 key[9] = (ciphers[7][9].ord ^ 'U'.ord).chr
 key[14] = (ciphers[7][14].ord ^ 'H'.ord).chr
 key[19] = (ciphers[7][19].ord ^ 'E'.ord).chr
