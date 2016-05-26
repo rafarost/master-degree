@@ -1,5 +1,6 @@
 require 'openssl'
 
+### COURSEWORK 3
 def decrypt(hex_key, hex_ciphertext, mode)
   ciphertext =  hex_to_bin(hex_ciphertext)
   decipher = OpenSSL::Cipher::AES.new(128, mode)
